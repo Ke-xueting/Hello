@@ -1,0 +1,27 @@
+schema {
+  query: RootQueryType
+  mutation: RootMutationType
+}
+
+"""Exposes a URL that specifies the behavior of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behavior of this scalar."""
+  url: String!
+) on SCALAR
+
+type Link {
+  description: String!
+  id: ID!
+  url: String!
+}
+
+type RootMutationType {
+  """Create a new link"""
+  createLink(description: String!, url: String!): Link
+}
+
+type RootQueryType {
+  """Get all links"""
+  allLinks: [Link!]!
+}
+
